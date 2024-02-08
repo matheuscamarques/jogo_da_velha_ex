@@ -1,5 +1,6 @@
 defmodule JogoVelha.Board do
   alias JogoVelha.Board
+
   defmodule Position2D do
     def new(x, y) do
       %{x: x, y: y}
@@ -47,7 +48,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{},
           %{x: 2, y: 1} => %{},
           %{x: 2, y: 2} => %{}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -61,7 +63,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{},
           %{x: 2, y: 1} => %{},
           %{x: 2, y: 2} => %{}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -75,7 +78,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{state: state},
           %{x: 2, y: 1} => %{state: state},
           %{x: 2, y: 2} => %{state: state}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -89,7 +93,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{},
           %{x: 2, y: 1} => %{state: state},
           %{x: 2, y: 2} => %{}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -103,7 +108,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{state: state},
           %{x: 2, y: 1} => %{},
           %{x: 2, y: 2} => %{}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -117,7 +123,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{},
           %{x: 2, y: 1} => %{},
           %{x: 2, y: 2} => %{state: state}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -131,7 +138,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{},
           %{x: 2, y: 1} => %{},
           %{x: 2, y: 2} => %{state: state}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -145,7 +153,8 @@ defmodule JogoVelha.Board do
           %{x: 2, y: 0} => %{state: state},
           %{x: 2, y: 1} => %{},
           %{x: 2, y: 2} => %{}
-        }) when not is_nil(state) do
+        })
+        when not is_nil(state) do
       {:winner, state}
     end
 
@@ -204,6 +213,7 @@ defmodule JogoVelha.Board do
         state = Map.get(board, Position2D.new(position), PositionState.new())
         print_state(state)
       end
+
       IO.puts("")
     end
   end
@@ -227,107 +237,119 @@ defmodule JogoVelha.Board do
       Position2D.new({2, 0}) => PositionState.new("G"),
       Position2D.new({2, 1}) => PositionState.new("H"),
       Position2D.new({2, 2}) => PositionState.new("I")
-    } |> Board.BoardWinnerStates.verify()
+    }
+    |> Board.BoardWinnerStates.verify()
   end
 
   def horizontal_winner_case() do
-    [%{
-      Position2D.new({0, 0}) => PositionState.new("A"),
-      Position2D.new({0, 1}) => PositionState.new("A"),
-      Position2D.new({0, 2}) => PositionState.new("A"),
-      Position2D.new({1, 0}) => PositionState.new("B"),
-      Position2D.new({1, 1}) => PositionState.new("B"),
-      Position2D.new({1, 2}) => PositionState.new("B"),
-      Position2D.new({2, 0}) => PositionState.new("B"),
-      Position2D.new({2, 1}) => PositionState.new("B"),
-      Position2D.new({2, 2}) => PositionState.new("B")
-    } |> Board.BoardWinnerStates.verify(),
-    %{
-      Position2D.new({0, 0}) => PositionState.new("B"),
-      Position2D.new({0, 1}) => PositionState.new(nil),
-      Position2D.new({0, 2}) => PositionState.new("B"),
-      Position2D.new({1, 0}) => PositionState.new("A"),
-      Position2D.new({1, 1}) => PositionState.new("A"),
-      Position2D.new({1, 2}) => PositionState.new("A"),
-      Position2D.new({2, 0}) => PositionState.new("B"),
-      Position2D.new({2, 1}) => PositionState.new(nil),
-      Position2D.new({2, 2}) => PositionState.new("B")
-    } |> Board.BoardWinnerStates.verify(),
-    %{
-      Position2D.new({0, 0}) => PositionState.new("B"),
-      Position2D.new({0, 1}) => PositionState.new(nil),
-      Position2D.new({0, 2}) => PositionState.new("B"),
-      Position2D.new({1, 0}) => PositionState.new("B"),
-      Position2D.new({1, 1}) => PositionState.new(nil),
-      Position2D.new({1, 2}) => PositionState.new("B"),
-      Position2D.new({2, 0}) => PositionState.new("A"),
-      Position2D.new({2, 1}) => PositionState.new("A"),
-      Position2D.new({2, 2}) => PositionState.new("A")
-    } |> Board.BoardWinnerStates.verify()
-  ]
+    [
+      %{
+        Position2D.new({0, 0}) => PositionState.new("A"),
+        Position2D.new({0, 1}) => PositionState.new("A"),
+        Position2D.new({0, 2}) => PositionState.new("A"),
+        Position2D.new({1, 0}) => PositionState.new("B"),
+        Position2D.new({1, 1}) => PositionState.new("B"),
+        Position2D.new({1, 2}) => PositionState.new("B"),
+        Position2D.new({2, 0}) => PositionState.new("B"),
+        Position2D.new({2, 1}) => PositionState.new("B"),
+        Position2D.new({2, 2}) => PositionState.new("B")
+      }
+      |> Board.BoardWinnerStates.verify(),
+      %{
+        Position2D.new({0, 0}) => PositionState.new("B"),
+        Position2D.new({0, 1}) => PositionState.new(nil),
+        Position2D.new({0, 2}) => PositionState.new("B"),
+        Position2D.new({1, 0}) => PositionState.new("A"),
+        Position2D.new({1, 1}) => PositionState.new("A"),
+        Position2D.new({1, 2}) => PositionState.new("A"),
+        Position2D.new({2, 0}) => PositionState.new("B"),
+        Position2D.new({2, 1}) => PositionState.new(nil),
+        Position2D.new({2, 2}) => PositionState.new("B")
+      }
+      |> Board.BoardWinnerStates.verify(),
+      %{
+        Position2D.new({0, 0}) => PositionState.new("B"),
+        Position2D.new({0, 1}) => PositionState.new(nil),
+        Position2D.new({0, 2}) => PositionState.new("B"),
+        Position2D.new({1, 0}) => PositionState.new("B"),
+        Position2D.new({1, 1}) => PositionState.new(nil),
+        Position2D.new({1, 2}) => PositionState.new("B"),
+        Position2D.new({2, 0}) => PositionState.new("A"),
+        Position2D.new({2, 1}) => PositionState.new("A"),
+        Position2D.new({2, 2}) => PositionState.new("A")
+      }
+      |> Board.BoardWinnerStates.verify()
+    ]
   end
 
   def vertical_winner_case() do
-    [%{
-      Position2D.new({0, 0}) => PositionState.new("A"),
-      Position2D.new({0, 1}) => PositionState.new("B"),
-      Position2D.new({0, 2}) => PositionState.new("B"),
-      Position2D.new({1, 0}) => PositionState.new("A"),
-      Position2D.new({1, 1}) => PositionState.new(nil),
-      Position2D.new({1, 2}) => PositionState.new("B"),
-      Position2D.new({2, 0}) => PositionState.new("A"),
-      Position2D.new({2, 1}) => PositionState.new("B"),
-      Position2D.new({2, 2}) => PositionState.new(nil)
-    } |> Board.BoardWinnerStates.verify(),
-    %{
-      Position2D.new({0, 0}) => PositionState.new("B"),
-      Position2D.new({0, 1}) => PositionState.new("A"),
-      Position2D.new({0, 2}) => PositionState.new("B"),
-      Position2D.new({1, 0}) => PositionState.new("A"),
-      Position2D.new({1, 1}) => PositionState.new("A"),
-      Position2D.new({1, 2}) => PositionState.new("B"),
-      Position2D.new({2, 0}) => PositionState.new("B"),
-      Position2D.new({2, 1}) => PositionState.new("A"),
-      Position2D.new({2, 2}) => PositionState.new("B")
-    } |> Board.BoardWinnerStates.verify(),
-    %{
-      Position2D.new({0, 0}) => PositionState.new(nil),
-      Position2D.new({0, 1}) => PositionState.new(nil),
-      Position2D.new({0, 2}) => PositionState.new("A"),
-      Position2D.new({1, 0}) => PositionState.new("B"),
-      Position2D.new({1, 1}) => PositionState.new(nil),
-      Position2D.new({1, 2}) => PositionState.new("A"),
-      Position2D.new({2, 0}) => PositionState.new("B"),
-      Position2D.new({2, 1}) => PositionState.new("B"),
-      Position2D.new({2, 2}) => PositionState.new("A")
-    } |> Board.BoardWinnerStates.verify()
-  ]
+    [
+      %{
+        Position2D.new({0, 0}) => PositionState.new("A"),
+        Position2D.new({0, 1}) => PositionState.new("B"),
+        Position2D.new({0, 2}) => PositionState.new("B"),
+        Position2D.new({1, 0}) => PositionState.new("A"),
+        Position2D.new({1, 1}) => PositionState.new(nil),
+        Position2D.new({1, 2}) => PositionState.new("B"),
+        Position2D.new({2, 0}) => PositionState.new("A"),
+        Position2D.new({2, 1}) => PositionState.new("B"),
+        Position2D.new({2, 2}) => PositionState.new(nil)
+      }
+      |> Board.BoardWinnerStates.verify(),
+      %{
+        Position2D.new({0, 0}) => PositionState.new("B"),
+        Position2D.new({0, 1}) => PositionState.new("A"),
+        Position2D.new({0, 2}) => PositionState.new("B"),
+        Position2D.new({1, 0}) => PositionState.new("A"),
+        Position2D.new({1, 1}) => PositionState.new("A"),
+        Position2D.new({1, 2}) => PositionState.new("B"),
+        Position2D.new({2, 0}) => PositionState.new("B"),
+        Position2D.new({2, 1}) => PositionState.new("A"),
+        Position2D.new({2, 2}) => PositionState.new("B")
+      }
+      |> Board.BoardWinnerStates.verify(),
+      %{
+        Position2D.new({0, 0}) => PositionState.new(nil),
+        Position2D.new({0, 1}) => PositionState.new(nil),
+        Position2D.new({0, 2}) => PositionState.new("A"),
+        Position2D.new({1, 0}) => PositionState.new("B"),
+        Position2D.new({1, 1}) => PositionState.new(nil),
+        Position2D.new({1, 2}) => PositionState.new("A"),
+        Position2D.new({2, 0}) => PositionState.new("B"),
+        Position2D.new({2, 1}) => PositionState.new("B"),
+        Position2D.new({2, 2}) => PositionState.new("A")
+      }
+      |> Board.BoardWinnerStates.verify()
+    ]
   end
 
   def cross_winner_case() do
-    [%{
-      Position2D.new({0, 0}) => PositionState.new("A"),
-      Position2D.new({0, 1}) => PositionState.new("B"),
-      Position2D.new({0, 2}) => PositionState.new("B"),
-      Position2D.new({1, 0}) => PositionState.new("B"),
-      Position2D.new({1, 1}) => PositionState.new("A"),
-      Position2D.new({1, 2}) => PositionState.new("B"),
-      Position2D.new({2, 0}) => PositionState.new("B"),
-      Position2D.new({2, 1}) => PositionState.new("B"),
-      Position2D.new({2, 2}) => PositionState.new("A")
-    } |> Board.BoardWinnerStates.verify(),
-    %{
-      Position2D.new({0, 0}) => PositionState.new("B"),
-      Position2D.new({0, 1}) => PositionState.new("B"),
-      Position2D.new({0, 2}) => PositionState.new("A"),
-      Position2D.new({1, 0}) => PositionState.new("B"),
-      Position2D.new({1, 1}) => PositionState.new("A"),
-      Position2D.new({1, 2}) => PositionState.new("B"),
-      Position2D.new({2, 0}) => PositionState.new("A"),
-      Position2D.new({2, 1}) => PositionState.new("B"),
-      Position2D.new({2, 2}) => PositionState.new("B")
-    } |> Board.BoardWinnerStates.verify()
-  ]
+    [
+      %{
+        Position2D.new({0, 0}) => PositionState.new("A"),
+        Position2D.new({0, 1}) => PositionState.new("B"),
+        Position2D.new({0, 2}) => PositionState.new("B"),
+        Position2D.new({1, 0}) => PositionState.new("B"),
+        Position2D.new({1, 1}) => PositionState.new("A"),
+        Position2D.new({1, 2}) => PositionState.new("B"),
+        Position2D.new({2, 0}) => PositionState.new("B"),
+        Position2D.new({2, 1}) => PositionState.new("B"),
+        Position2D.new({2, 2}) => PositionState.new("A")
+      }
+      |> Board.BoardWinnerStates.verify(),
+      %{
+        Position2D.new({0, 0}) => PositionState.new("B"),
+        Position2D.new({0, 1}) => PositionState.new("B"),
+        Position2D.new({0, 2}) => PositionState.new("A"),
+        Position2D.new({1, 0}) => PositionState.new("B"),
+        Position2D.new({1, 1}) => PositionState.new("A"),
+        Position2D.new({1, 2}) => PositionState.new("B"),
+        Position2D.new({2, 0}) => PositionState.new("A"),
+        Position2D.new({2, 1}) => PositionState.new("B"),
+        Position2D.new({2, 2}) => PositionState.new("B")
+      }
+      |> Board.BoardWinnerStates.verify()
+    ]
   end
 
   def continue_case() do
@@ -341,6 +363,7 @@ defmodule JogoVelha.Board do
       Position2D.new({2, 0}) => PositionState.new(nil),
       Position2D.new({2, 1}) => PositionState.new("B"),
       Position2D.new({2, 2}) => PositionState.new("A")
-    } |> Board.BoardWinnerStates.verify()
+    }
+    |> Board.BoardWinnerStates.verify()
   end
 end

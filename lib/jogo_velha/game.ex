@@ -1,10 +1,11 @@
 defmodule JogoVelha.Game do
   alias JogoVelha.Board
+
   def start_game() do
     %{
       player1: nil,
       player2: nil,
-      board:  Board.new(),
+      board: Board.new(),
       game_state: :new
     }
   end
@@ -24,11 +25,12 @@ defmodule JogoVelha.Game do
 
     new_game_state = Board.verify(new_board)
 
-    new_game  = game
-                |> Map.put(:board, new_board)
-                |> Map.put(:game_state, new_game_state)
+    new_game =
+      game
+      |> Map.put(:board, new_board)
+      |> Map.put(:game_state, new_game_state)
 
-                Board.print_board(new_board)
+    Board.print_board(new_board)
     new_game
   end
 end
