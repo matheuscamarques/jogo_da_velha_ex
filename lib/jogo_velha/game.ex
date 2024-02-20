@@ -51,6 +51,6 @@ defmodule JogoVelha.Game do
 
   def move(game, _position, _player) do
     IO.inspect("Error: Wrong Player Turn")
-    {:wrong_player_turn, game}
+    game
   end
 end
